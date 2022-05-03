@@ -47,8 +47,8 @@
                     'A': 'Ai',
                     'e': 'enter',
                     'E': 'Enter',
-                    'i': 'imer',
-                    'I': 'Imer',
+                    'i': 'imes',
+                    'I': 'Imes',
                     'o': 'ober',
                     'O': 'Ober',
                     'u': 'ufat',
@@ -61,14 +61,14 @@
             var msg = inputTextarea.value;
             logToConsole("decriptando a mensagem: " + msg);
 
-            outputTextarea.value = msg.replace(/ai|enter|imer|ober|ufat/gi, match => (
+            outputTextarea.value = msg.replace(/ai|enter|imes|ober|ufat/gi, match => (
                 {
                     'ai': 'a',
                     'Ai': 'A',
                     'enter': 'e',
                     'Enter': 'E',
-                    'imer': 'i',
-                    'Imer': 'I',
+                    'imes': 'i',
+                    'Imes': 'I',
                     'ober': 'o',
                     'Ober': 'O',
                     'ufat': 'u',
