@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <title>Challange Oracle ONE | Iniciante em Programação - Sprint 01</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Jonhpolsh" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1 class="page-sym">>_</h1>
+        <h2>Encriptador de mensagens</h2>
+    </header>
+    <main>
+        <div class="crypto-wapper">
+            <div>
+                <textarea id="input" class="msg-input" placeholder="Digite a mensagem aqui"></textarea>
+                <button id="encrypt-btn">Encriptar</button>
+                <button id="decrypt-btn">Decriptar</button>
+            </div>
+            <div>
+                <textarea id="output" class="msg-output" placeholder="Saída" readonly disabled></textarea>
+                <button id="copy-btn">Copiar</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        const inputTextarea = document.getElementById("input");
+        const outputTextarea = document.getElementById("output");
+        const encryptButton = document.getElementById("encrypt-btn");
+        const decryptButton = document.getElementById("decrypt-btn");
+        const copyButton = document.getElementById("copy-btn");
+
+        function logToConsole(str) {
+            console.log(str);
+        }
+
+        function encryptMsg() {
+            var msg = inputTextarea.value;
+            logToConsole("encriptando a mensagem: " + msg);
+
+            outputTextarea.value = msg.replace(/a|e|i|o|u/gi, match => (
+                {
+                    'a': 'ai',
+                    'A': 'Ai',
+                    'e': 'enter',
+                    'E': 'Enter',
+                    'i': 'imer',
+                    'I': 'Imer',
+                    'o': 'ober',
+                    'O': 'Ober',
+                    'u': 'ufat',
+                    'U': 'Ufat'
+                }[match]
+            ));
+        }
+
+        function decryptMsg() {
+            var msg = inputTextarea.value;
+            logToConsole("decriptando a mensagem: " + msg);
+
+            outputTextarea.value = msg.replace(/ai|enter|imer|ober|ufat/gi, match => (
+                {
+                    'ai': 'a',
+                    'Ai': 'A',
+                    'enter': 'e',
+                    'Enter': 'E',
+                    'imer': 'i',
+                    'Imer': 'I',
+                    'ober': 'o',
+                    'Ober': 'O',
+                    'ufat': 'u',
+                    'Ufat': 'U'
+                }[match]
+            ));
+        }
+
+        function copyCryptMsg() {
+            navigator.clipboard.writeText(outputTextarea.value).then(function () {
+                logToConsole('mesagem copiada para o clipboard');
+                outputTextarea.animate([
+                    { outline: 'dashed 2px #2dba78' }
+                ], {
+                    duration: 400
+                });
+            }, function () {
+                logToConsole('não foi possível copiar a mensagem');
+            })
+        }
+
+        encryptButton.onclick = encryptMsg;
+        decryptButton.onclick = decryptMsg;
+        copyButton.onclick = copyCryptMsg;
+    </script>
+</body>
+</html>
