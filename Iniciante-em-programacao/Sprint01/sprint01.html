@@ -10,8 +10,15 @@
 </head>
 <body>
     <header>
-        <h1 class="page-sym">>_</h1>
-        <h2>Encriptador de mensagens</h2>
+        <h1 class="title">> Decodificador de texto _</h1>
+        <div class="popup-help">
+            <h1 class="help-sym" tabindex="0">?</h1>
+            <span class="help-info">
+                Este é um modelo de decodificador de texto simples capaz tanto de
+                "criptografar" uma mensagem quanto "descriptografá-la".
+                <button id="popup-ex-btn" class="under-btn">Exemplo</button>
+            </span>
+        </div>
     </header>
     <main>
         <div class="crypto-wapper">
@@ -32,6 +39,7 @@
         const encryptButton = document.getElementById("encrypt-btn");
         const decryptButton = document.getElementById("decrypt-btn");
         const copyButton = document.getElementById("copy-btn");
+        const exampleButton = document.getElementById("popup-ex-btn");
 
         function logToConsole(str) {
             console.log(str);
@@ -93,6 +101,9 @@
         encryptButton.onclick = encryptMsg;
         decryptButton.onclick = decryptMsg;
         copyButton.onclick = copyCryptMsg;
+        exampleButton.onclick = function () {
+            inputTextarea.value = `"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing."`;
+        };
     </script>
 </body>
 </html>
